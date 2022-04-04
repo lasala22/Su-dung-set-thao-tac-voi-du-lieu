@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const animals = [{
+            "ID": "A1",
+            "Name": "Tiger"
+        },
+        {
+            "ID": "B1",
+            "Name": "Elephant"
+        },
+        {
+            "ID": "A3",
+            "Name": "Lion"
+        }]
+
+        let zoo = new Set(animals);
+        let Rabbit = {
+            "ID": "B2",
+            "Name": "Rabbit"
+        }
+        console.log(zoo);
+        let addAnimal = (animal) => {
+            zoo.add(animal);
+        }
+
+        let isExist = (animal) => {
+            let checkExist = false;
+            zoo.forEach(zo => {
+                if (zo.ID == animal.ID && zo.Name == animal.Name) {
+                    checkExist = true;
+                }
+            })
+            return checkExist;
+        }
+        console.log(isExist(Rabbit));
+        // xoa mot dong vat trong zoo
+        let deleteAnimalByID = (animalID) => {
+            zoo.forEach(zo => {
+                if (zo.ID == animalID) {
+                    zoo.delete(zo);
+                }
+            })
+        }
+        deleteAnimalByID("B1");
+        // them neu chua co trong zoo
+        let addIfNotExist = (animal) => {
+            if (!isExist(animal)) {
+                addAnimal(animal)
+            }
+        }
+        addIfNotExist(Rabbit);
+        console.log(zoo);
+    </script>
+</body>
+</html>
